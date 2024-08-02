@@ -4,16 +4,43 @@
     name: 'carbon-emission-modal'
 } %}
 
+{% define data = {
+
+    product:required
+
+}%}
+
 {% block body %}
 
-      <button class="modal-button" id="openModalBtn">Click Me</button>
+      {# <button class="modal-button" id="openModalBtn">Click Me</button>
       <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Modal Title</h2>
             <p>This is a modal!</p>
         </div>
+    </div> #}
+        {% if data.product.attributes.carbon_emission is defined  %}
+                
+    <div class="green-energy-container">
+        <div class="data-item">
+            <div class="icon">🌱</div>
+            <div class="data-text">
+                <h3>Manufacturing CO2e</h3>
+               
+                <p>{{ data.product.attributes.carbon_emission }} kg CO₂e</p>
+            </div>
+        </div>
+                
+        <div class="data-item">
+            <div class="icon">⚡</div>
+            <div class="data-text">
+                <h3>Energy Emission</h3>
+                <p>{{ data.product.attributes.energy_emission }} kWh</p>
+            </div>
+        </div>
     </div>
-
+                
+                {% endif %}
 {% endblock body %}
 

@@ -10,7 +10,11 @@
 
       {% include molecule('carbon-emission-modal', 'CarbonEmissionWidget') with {
                     class: 'table table--expand',
+                    data: {
+                        product: data.product,
+                    }
                    
                 } only %}
+                
    
 {% endblock body %}
