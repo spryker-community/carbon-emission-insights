@@ -1,4 +1,10 @@
 @include product-label-widget-label-group() {
     padding: rem(16);
     font-family: $setting-font-family;
+    .flag--co2e {
+        background-color: #52ca52;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
 }

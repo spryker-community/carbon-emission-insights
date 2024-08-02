@@ -23,6 +23,7 @@
         {{ form_errors(shipmentSelection) }}
 
         <h4 class="title title--secondary-small">{{ 'page.checkout.shipment.shipping_method_heading' | trans }}</h4>
+        <p style="color:green">Help us reduce our carbon footprint. Select our eco-friendly shipping option 🌿</p>
 
         {% for name, choices in shipmentSelection.vars.choices %}
             <h4 class="title title--secondary-small spacing-bottom grid grid--justify grid--middle">
