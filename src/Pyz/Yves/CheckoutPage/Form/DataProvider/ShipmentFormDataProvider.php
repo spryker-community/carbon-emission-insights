@@ -22,16 +22,21 @@ class ShipmentFormDataProvider extends SpyShipmentFormDataProvider
     protected static $co2eData = '';
 
     /**
+     * @var string
+     */
+    protected static $destination = '';
+
+    /**
      * @deprecated Use {@link createAvailableMethodsByShipmentChoiceList()} instead.
      *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return array<string, array<string, int>>
      */
-    protected function createAvailableShipmentChoiceList(QuoteTransfer $quoteTransfer)
+    protected function createAvailableShipmentChoiceList(QuoteTransfer $quoteTransfer): array
     {
         $shipmentMethods = [];
-
+        self::$destination = $quoteTransfer->getShippingAddress()->getCity();
         $shipmentMethodsTransfer = $this->getAvailableShipmentMethods($quoteTransfer);
         foreach ($shipmentMethodsTransfer->getMethods() as $shipmentMethodTransfer) {
             $carrierName = $shipmentMethodTransfer->getCarrierName();
@@ -64,7 +69,7 @@ class ShipmentFormDataProvider extends SpyShipmentFormDataProvider
                 'route' => [
                     [
                         'location' => [
-                            'query' => 'New Delhi',
+                            'query' => 'Mumbai',
                         ],
                     ],
                     [
@@ -78,7 +83,7 @@ class ShipmentFormDataProvider extends SpyShipmentFormDataProvider
                     ],
                     [
                         'location' => [
-                            'query' => 'Mumbai',
+                            'query' => self::$destination ?: 'New Delhi',
                         ],
                     ],
                 ],
@@ -106,11 +111,11 @@ class ShipmentFormDataProvider extends SpyShipmentFormDataProvider
         if ($routeData) {
             foreach ($routeData as $route) {
                 if ($route['type'] == 'leg') {
-                    if (($shipmentDescription == 'Standard' || $shipmentDescription == 'Next Day') && $route['transport_mode'] == 'road') {
+                    if (($shipmentDescription == 'Express' || $shipmentDescription == 'Same Day') && $route['transport_mode'] == 'road') {
                         $co2e = sprintf('CO2e: %s %s', $route['co2e'], $route['co2e_unit']);
                     }
 
-                    if (($shipmentDescription == 'Express' || $shipmentDescription == 'Same Day') && $route['transport_mode'] == 'rail') {
+                    if (($shipmentDescription == 'Standard' || $shipmentDescription == 'Next Day') && $route['transport_mode'] == 'rail') {
                         $co2e = sprintf('CO2e: %s %s', $route['co2e'], $route['co2e_unit']);
                     }
                 }
