@@ -6,6 +6,13 @@ Integrating Carbon emission metrics and providing product alternatives.
 
 Our project focuses on enhancing environmental transparency by integrating carbon footprint data into the shopping experience. On the product detail page, users can view the carbon footprint associated with each product, providing insights into its environmental impact. In the cart, we display estimated carbon emissions based on the product's origin and the distance to the delivery location, encouraging users to select shipping options that minimize carbon emissions. Additionally, our product listing page (PLP) features labels highlighting products with lower carbon footprints, making it easier for users to choose environmentally friendly options. This approach aims to promote sustainability and inform consumers about their choices' environmental impact.
 
+## 📹 Team Demo
+Team Nagarro Oryx presented this demo at the conclusion of the Nagarro Hackathon on Augsut 2nd, 2024:
+
+[![Nagarro Hackathon: Demo Team #1: Nagarro Oryx](https://img.youtube.com/vi/dN0xixXFtgg/0.jpg)](https://www.youtube.com/watch?v=dN0xixXFtgg)
+
+[View other team demo's on our YouTube Playlist](https://www.youtube.com/playlist?list=PLJooqCSo73SiCupw9Xtj8-6vUERAxpdk_)
+
 ## HowTos Cli
 for adding attribute: docker/sdk console data:import:product-attribute-key && docker/sdk console data:import:product-management-attribute
  
